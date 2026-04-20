@@ -17,7 +17,7 @@ import java_cup.runtime.ComplexSymbolFactory.Location;
 digito      = [0-9]
 letra       = [a-zA-Z]
 id          = ({letra}|_)(({letra}|_)|{digito})*
-interfaz    = {letra}({letra}|{digito}|/)*
+interfaz = {letra}({letra}|{digito}|\/)*
 ip          = {digito}+"."{digito}+"."{digito}+"."{digito}+"/"{digito}+
 espacio     = (" "|\r|\n|\t|\f)+
 
@@ -29,27 +29,37 @@ public void setSymbolFactory(ComplexSymbolFactory sf){
     symbolFactory = sf;
 }
 
-private Symbol symbol(String name, int sym){
+private Symbol symbol(String name, int sym) {
     return symbolFactory.newSymbol(
         name,
         sym,
-        new Location(yyline+1, yycolumn+1, yychar),
-        new Location(yyline+1, yycolumn+yylength(), yychar+yylength())
+        new Location(yyline+1, yycolumn+1, (int)yychar),
+        new Location(yyline+1, yycolumn+yylength(), (int)(yychar+yylength()))
     );
 }
 
-private Symbol symbol(String name, int sym, Object val){
-    Location left = new Location(yyline+1, yycolumn+1, yychar);
-    Location right = new Location(yyline+1, yycolumn+yylength(), yychar+yylength());
+private Symbol symbol(String name, int sym, Object val) {
+
+    Location left = new Location(
+        yyline+1,
+        yycolumn+1,
+        (int)yychar
+    );
+
+    Location right = new Location(
+        yyline+1,
+        yycolumn+yylength(),
+        (int)(yychar+yylength())
+    );
 
     return symbolFactory.newSymbol(name, sym, left, right, val);
 }
 
-private void error(String message){
+private void error(String message) {
     System.out.println(
-        "Error léxico en línea " + (yyline+1) +
+        "Error en linea " + (yyline+1) +
         ", columna " + (yycolumn+1) +
-        ": " + message
+        " caracter: " + message
     );
 }
 
@@ -57,10 +67,10 @@ private void error(String message){
 
 %eofval{
 return symbolFactory.newSymbol(
-    "EOF",
-    Simbolo.EOF,
-    new Location(yyline+1, yycolumn+1, yychar),
-    new Location(yyline+1, yycolumn+1, yychar+1)
+"EOF",
+Simbolo.EOF,
+new Location(yyline+1, yycolumn+1, (int)yychar),
+new Location(yyline+1, yycolumn+1, (int)yychar)
 );
 %eofval}
 
@@ -68,14 +78,12 @@ return symbolFactory.newSymbol(
 
 <YYINITIAL>{
 
-    /* símbolos */
     ";"     { return symbol("PUNTO_COMA", Simbolo.PUNTO_COMA); }
     "{"     { return symbol("LLAVE_ABIERTA", Simbolo.LLAVE_ABIERTA); }
     "}"     { return symbol("LLAVE_CERRADA", Simbolo.LLAVE_CERRADA); }
     "."     { return symbol("PUNTO", Simbolo.PUNTO); }
     "->"    { return symbol("FLECHA", Simbolo.FLECHA); }
 
-    /* palabras reservadas */
     "red"           { return symbol("RED", Simbolo.RED); }
     "router"        { return symbol("ROUTER", Simbolo.ROUTER); }
     "firewall"      { return symbol("FIREWALL", Simbolo.FIREWALL); }
@@ -93,25 +101,19 @@ return symbolFactory.newSymbol(
     "tipo"          { return symbol("TIPO", Simbolo.TIPO); }
     "conectar"      { return symbol("CONECTAR", Simbolo.CONECTAR); }
 
-    /* tokens especiales */
     {ip}            { return symbol("DIRECCION_IP", Simbolo.DIRECCION_IP, yytext()); }
 
-    /* identificadores */
     {id}            { return symbol("ID", Simbolo.ID, yytext()); }
 
-    /* interfaces */
     {interfaz}      { return symbol("NOMBRE_INTERFAZ", Simbolo.NOMBRE_INTERFAZ, yytext()); }
 
-    /* cadenas opcionales */
     [\"] ~[\"] {
         String t = yytext();
         return symbol("CADENA", Simbolo.CADENA, t.substring(1, t.length()-1));
     }
 
-    /* comentarios */
     "/*" ~"*/"      { }
 
-    /* espacios */
     {espacio}       { }
 
     /* error */
