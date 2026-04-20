@@ -1,4 +1,4 @@
-package arbolast;
+package proyectodsl;
 import java_cup.runtime.Symbol;
 
 parser code

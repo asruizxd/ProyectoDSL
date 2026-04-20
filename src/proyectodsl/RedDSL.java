@@ -1,6 +1,6 @@
 package proyectodsl;
 
-public class ArbolAst {
+public class RedDSL {
 
     /**
      * @param args the command line arguments
