@@ -6,6 +6,7 @@
 package proyectodsl;
 
 import java_cup.runtime.Symbol;
+import java.util.HashSet;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -31,13 +32,17 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\026\000\002\002\004\000\002\002\007\000\002\003" +
+    "\000\040\000\002\002\004\000\002\002\007\000\002\003" +
     "\004\000\002\003\003\000\002\004\003\000\002\004\003" +
-    "\000\002\004\004\000\002\005\007\000\002\005\007\000" +
-    "\002\005\007\000\002\005\007\000\002\005\007\000\002" +
-    "\005\007\000\002\005\007\000\002\005\007\000\002\005" +
-    "\007\000\002\005\007\000\002\006\004\000\002\006\003" +
-    "\000\002\007\005\000\002\007\007\000\002\010\013" });
+    "\000\002\004\004\000\002\011\002\000\002\005\010\000" +
+    "\002\012\002\000\002\005\010\000\002\013\002\000\002" +
+    "\005\010\000\002\014\002\000\002\005\010\000\002\015" +
+    "\002\000\002\005\010\000\002\016\002\000\002\005\010" +
+    "\000\002\017\002\000\002\005\010\000\002\020\002\000" +
+    "\002\005\010\000\002\021\002\000\002\005\010\000\002" +
+    "\022\002\000\002\005\010\000\002\006\004\000\002\006" +
+    "\003\000\002\007\005\000\002\007\007\000\002\010\013" +
+    "" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -45,79 +50,84 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\121\000\004\004\004\001\002\000\004\030\007\001" +
+    "\000\133\000\004\004\004\001\002\000\004\030\007\001" +
     "\002\000\004\002\006\001\002\000\004\002\001\001\002" +
     "\000\004\023\010\001\002\000\032\003\021\005\025\006" +
     "\027\007\022\010\026\011\015\012\014\013\013\014\011" +
-    "\015\012\016\024\022\016\001\002\000\004\030\120\001" +
-    "\002\000\004\030\114\001\002\000\004\030\110\001\002" +
-    "\000\004\030\104\001\002\000\004\030\100\001\002\000" +
-    "\004\030\070\001\002\000\034\003\ufffe\005\ufffe\006\ufffe" +
+    "\015\012\016\024\022\016\001\002\000\004\030\131\001" +
+    "\002\000\004\030\124\001\002\000\004\030\117\001\002" +
+    "\000\004\030\112\001\002\000\004\030\105\001\002\000" +
+    "\004\030\075\001\002\000\034\003\ufffe\005\ufffe\006\ufffe" +
     "\007\ufffe\010\ufffe\011\ufffe\012\ufffe\013\ufffe\014\ufffe\015" +
     "\ufffe\016\ufffe\022\ufffe\024\ufffe\001\002\000\034\003\ufffc" +
     "\005\ufffc\006\ufffc\007\ufffc\010\ufffc\011\ufffc\012\ufffc\013" +
     "\ufffc\014\ufffc\015\ufffc\016\ufffc\022\ufffc\024\ufffc\001\002" +
-    "\000\004\025\067\001\002\000\004\030\063\001\002\000" +
+    "\000\004\025\074\001\002\000\004\030\067\001\002\000" +
     "\034\003\ufffd\005\ufffd\006\ufffd\007\ufffd\010\ufffd\011\ufffd" +
     "\012\ufffd\013\ufffd\014\ufffd\015\ufffd\016\ufffd\022\ufffd\024" +
-    "\ufffd\001\002\000\004\030\057\001\002\000\004\030\053" +
-    "\001\002\000\004\030\047\001\002\000\004\030\033\001" +
+    "\ufffd\001\002\000\004\030\062\001\002\000\004\030\055" +
+    "\001\002\000\004\030\050\001\002\000\004\030\033\001" +
     "\002\000\034\003\021\005\025\006\027\007\022\010\026" +
     "\011\015\012\014\013\013\014\011\015\012\016\024\022" +
     "\016\024\032\001\002\000\034\003\uffff\005\uffff\006\uffff" +
     "\007\uffff\010\uffff\011\uffff\012\uffff\013\uffff\014\uffff\015" +
     "\uffff\016\uffff\022\uffff\024\uffff\001\002\000\004\002\000" +
-    "\001\002\000\004\023\034\001\002\000\004\017\036\001" +
-    "\002\000\006\017\036\024\045\001\002\000\004\032\040" +
-    "\001\002\000\006\017\uffef\024\uffef\001\002\000\006\020" +
-    "\042\025\041\001\002\000\006\017\uffee\024\uffee\001\002" +
-    "\000\004\031\043\001\002\000\004\025\044\001\002\000" +
-    "\006\017\uffed\024\uffed\001\002\000\034\003\ufff9\005\ufff9" +
-    "\006\ufff9\007\ufff9\010\ufff9\011\ufff9\012\ufff9\013\ufff9\014" +
-    "\ufff9\015\ufff9\016\ufff9\022\ufff9\024\ufff9\001\002\000\006" +
-    "\017\ufff0\024\ufff0\001\002\000\004\023\050\001\002\000" +
-    "\004\017\036\001\002\000\006\017\036\024\052\001\002" +
+    "\001\002\000\004\023\034\001\002\000\004\017\ufff8\001" +
+    "\002\000\004\017\037\001\002\000\006\017\037\024\046" +
+    "\001\002\000\004\032\041\001\002\000\006\017\uffe5\024" +
+    "\uffe5\001\002\000\006\020\043\025\042\001\002\000\006" +
+    "\017\uffe4\024\uffe4\001\002\000\004\031\044\001\002\000" +
+    "\004\025\045\001\002\000\006\017\uffe3\024\uffe3\001\002" +
     "\000\034\003\ufff7\005\ufff7\006\ufff7\007\ufff7\010\ufff7\011" +
     "\ufff7\012\ufff7\013\ufff7\014\ufff7\015\ufff7\016\ufff7\022\ufff7" +
-    "\024\ufff7\001\002\000\004\023\054\001\002\000\004\017" +
-    "\036\001\002\000\006\017\036\024\056\001\002\000\034" +
-    "\003\ufffa\005\ufffa\006\ufffa\007\ufffa\010\ufffa\011\ufffa\012" +
-    "\ufffa\013\ufffa\014\ufffa\015\ufffa\016\ufffa\022\ufffa\024\ufffa" +
-    "\001\002\000\004\023\060\001\002\000\004\017\036\001" +
-    "\002\000\006\017\036\024\062\001\002\000\034\003\ufff1" +
-    "\005\ufff1\006\ufff1\007\ufff1\010\ufff1\011\ufff1\012\ufff1\013" +
-    "\ufff1\014\ufff1\015\ufff1\016\ufff1\022\ufff1\024\ufff1\001\002" +
-    "\000\004\023\064\001\002\000\004\017\036\001\002\000" +
-    "\006\017\036\024\066\001\002\000\034\003\ufff8\005\ufff8" +
-    "\006\ufff8\007\ufff8\010\ufff8\011\ufff8\012\ufff8\013\ufff8\014" +
-    "\ufff8\015\ufff8\016\ufff8\022\ufff8\024\ufff8\001\002\000\034" +
-    "\003\ufffb\005\ufffb\006\ufffb\007\ufffb\010\ufffb\011\ufffb\012" +
-    "\ufffb\013\ufffb\014\ufffb\015\ufffb\016\ufffb\022\ufffb\024\ufffb" +
-    "\001\002\000\004\026\071\001\002\000\004\032\072\001" +
-    "\002\000\004\027\073\001\002\000\004\030\074\001\002" +
-    "\000\004\026\075\001\002\000\004\032\076\001\002\000" +
-    "\004\025\077\001\002\000\034\003\uffec\005\uffec\006\uffec" +
-    "\007\uffec\010\uffec\011\uffec\012\uffec\013\uffec\014\uffec\015" +
-    "\uffec\016\uffec\022\uffec\024\uffec\001\002\000\004\023\101" +
-    "\001\002\000\004\017\036\001\002\000\006\017\036\024" +
-    "\103\001\002\000\034\003\ufff6\005\ufff6\006\ufff6\007\ufff6" +
-    "\010\ufff6\011\ufff6\012\ufff6\013\ufff6\014\ufff6\015\ufff6\016" +
-    "\ufff6\022\ufff6\024\ufff6\001\002\000\004\023\105\001\002" +
-    "\000\004\017\036\001\002\000\006\017\036\024\107\001" +
-    "\002\000\034\003\ufff5\005\ufff5\006\ufff5\007\ufff5\010\ufff5" +
-    "\011\ufff5\012\ufff5\013\ufff5\014\ufff5\015\ufff5\016\ufff5\022" +
-    "\ufff5\024\ufff5\001\002\000\004\023\111\001\002\000\004" +
-    "\017\036\001\002\000\006\017\036\024\113\001\002\000" +
-    "\034\003\ufff4\005\ufff4\006\ufff4\007\ufff4\010\ufff4\011\ufff4" +
-    "\012\ufff4\013\ufff4\014\ufff4\015\ufff4\016\ufff4\022\ufff4\024" +
-    "\ufff4\001\002\000\004\023\115\001\002\000\004\017\036" +
-    "\001\002\000\006\017\036\024\117\001\002\000\034\003" +
-    "\ufff2\005\ufff2\006\ufff2\007\ufff2\010\ufff2\011\ufff2\012\ufff2" +
-    "\013\ufff2\014\ufff2\015\ufff2\016\ufff2\022\ufff2\024\ufff2\001" +
-    "\002\000\004\023\121\001\002\000\004\017\036\001\002" +
-    "\000\006\017\036\024\123\001\002\000\034\003\ufff3\005" +
-    "\ufff3\006\ufff3\007\ufff3\010\ufff3\011\ufff3\012\ufff3\013\ufff3" +
-    "\014\ufff3\015\ufff3\016\ufff3\022\ufff3\024\ufff3\001\002" });
+    "\024\ufff7\001\002\000\006\017\uffe6\024\uffe6\001\002\000" +
+    "\004\023\051\001\002\000\004\017\ufff4\001\002\000\004" +
+    "\017\037\001\002\000\006\017\037\024\054\001\002\000" +
+    "\034\003\ufff3\005\ufff3\006\ufff3\007\ufff3\010\ufff3\011\ufff3" +
+    "\012\ufff3\013\ufff3\014\ufff3\015\ufff3\016\ufff3\022\ufff3\024" +
+    "\ufff3\001\002\000\004\023\056\001\002\000\004\017\ufffa" +
+    "\001\002\000\004\017\037\001\002\000\006\017\037\024" +
+    "\061\001\002\000\034\003\ufff9\005\ufff9\006\ufff9\007\ufff9" +
+    "\010\ufff9\011\ufff9\012\ufff9\013\ufff9\014\ufff9\015\ufff9\016" +
+    "\ufff9\022\ufff9\024\ufff9\001\002\000\004\023\063\001\002" +
+    "\000\004\017\uffe8\001\002\000\004\017\037\001\002\000" +
+    "\006\017\037\024\066\001\002\000\034\003\uffe7\005\uffe7" +
+    "\006\uffe7\007\uffe7\010\uffe7\011\uffe7\012\uffe7\013\uffe7\014" +
+    "\uffe7\015\uffe7\016\uffe7\022\uffe7\024\uffe7\001\002\000\004" +
+    "\023\070\001\002\000\004\017\ufff6\001\002\000\004\017" +
+    "\037\001\002\000\006\017\037\024\073\001\002\000\034" +
+    "\003\ufff5\005\ufff5\006\ufff5\007\ufff5\010\ufff5\011\ufff5\012" +
+    "\ufff5\013\ufff5\014\ufff5\015\ufff5\016\ufff5\022\ufff5\024\ufff5" +
+    "\001\002\000\034\003\ufffb\005\ufffb\006\ufffb\007\ufffb\010" +
+    "\ufffb\011\ufffb\012\ufffb\013\ufffb\014\ufffb\015\ufffb\016\ufffb" +
+    "\022\ufffb\024\ufffb\001\002\000\004\026\076\001\002\000" +
+    "\004\032\077\001\002\000\004\027\100\001\002\000\004" +
+    "\030\101\001\002\000\004\026\102\001\002\000\004\032" +
+    "\103\001\002\000\004\025\104\001\002\000\034\003\uffe2" +
+    "\005\uffe2\006\uffe2\007\uffe2\010\uffe2\011\uffe2\012\uffe2\013" +
+    "\uffe2\014\uffe2\015\uffe2\016\uffe2\022\uffe2\024\uffe2\001\002" +
+    "\000\004\023\106\001\002\000\004\017\ufff2\001\002\000" +
+    "\004\017\037\001\002\000\006\017\037\024\111\001\002" +
+    "\000\034\003\ufff1\005\ufff1\006\ufff1\007\ufff1\010\ufff1\011" +
+    "\ufff1\012\ufff1\013\ufff1\014\ufff1\015\ufff1\016\ufff1\022\ufff1" +
+    "\024\ufff1\001\002\000\004\023\113\001\002\000\004\017" +
+    "\ufff0\001\002\000\004\017\037\001\002\000\006\017\037" +
+    "\024\116\001\002\000\034\003\uffef\005\uffef\006\uffef\007" +
+    "\uffef\010\uffef\011\uffef\012\uffef\013\uffef\014\uffef\015\uffef" +
+    "\016\uffef\022\uffef\024\uffef\001\002\000\004\023\120\001" +
+    "\002\000\004\017\uffee\001\002\000\004\017\037\001\002" +
+    "\000\006\017\037\024\123\001\002\000\034\003\uffed\005" +
+    "\uffed\006\uffed\007\uffed\010\uffed\011\uffed\012\uffed\013\uffed" +
+    "\014\uffed\015\uffed\016\uffed\022\uffed\024\uffed\001\002\000" +
+    "\004\023\125\001\002\000\004\017\uffea\001\002\000\004" +
+    "\017\037\001\002\000\006\017\037\024\130\001\002\000" +
+    "\034\003\uffe9\005\uffe9\006\uffe9\007\uffe9\010\uffe9\011\uffe9" +
+    "\012\uffe9\013\uffe9\014\uffe9\015\uffe9\016\uffe9\022\uffe9\024" +
+    "\uffe9\001\002\000\004\023\132\001\002\000\004\017\uffec" +
+    "\001\002\000\004\017\037\001\002\000\006\017\037\024" +
+    "\135\001\002\000\034\003\uffeb\005\uffeb\006\uffeb\007\uffeb" +
+    "\010\uffeb\011\uffeb\012\uffeb\013\uffeb\014\uffeb\015\uffeb\016" +
+    "\uffeb\022\uffeb\024\uffeb\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -125,7 +135,7 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\121\000\004\002\004\001\001\000\002\001\001\000" +
+    "\000\133\000\004\002\004\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\012" +
     "\003\027\004\016\005\022\010\017\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
@@ -134,28 +144,33 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\010\004\030\005\022\010\017" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\006\006\034\007\036\001\001\000\004\007\045" +
+    "\001\000\004\012\034\001\001\000\006\006\035\007\037" +
+    "\001\001\000\004\007\046\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\006\006\050\007\036\001\001\000\004" +
-    "\007\045\001\001\000\002\001\001\000\002\001\001\000" +
-    "\006\006\054\007\036\001\001\000\004\007\045\001\001" +
-    "\000\002\001\001\000\002\001\001\000\006\006\060\007" +
-    "\036\001\001\000\004\007\045\001\001\000\002\001\001" +
-    "\000\002\001\001\000\006\006\064\007\036\001\001\000" +
-    "\004\007\045\001\001\000\002\001\001\000\002\001\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\014\051" +
+    "\001\001\000\006\006\052\007\037\001\001\000\004\007" +
+    "\046\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\011\056\001\001\000\006\006\057\007\037\001\001\000" +
+    "\004\007\046\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\022\063\001\001\000\006\006\064\007\037\001" +
+    "\001\000\004\007\046\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\013\070\001\001\000\006\006\071\007" +
+    "\037\001\001\000\004\007\046\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\006\006" +
-    "\101\007\036\001\001\000\004\007\045\001\001\000\002" +
-    "\001\001\000\002\001\001\000\006\006\105\007\036\001" +
-    "\001\000\004\007\045\001\001\000\002\001\001\000\002" +
-    "\001\001\000\006\006\111\007\036\001\001\000\004\007" +
-    "\045\001\001\000\002\001\001\000\002\001\001\000\006" +
-    "\006\115\007\036\001\001\000\004\007\045\001\001\000" +
-    "\002\001\001\000\002\001\001\000\006\006\121\007\036" +
-    "\001\001\000\004\007\045\001\001\000\002\001\001" });
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\015\106\001\001\000\006\006\107\007\037" +
+    "\001\001\000\004\007\046\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\016\113\001\001\000\006\006\114" +
+    "\007\037\001\001\000\004\007\046\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\017\120\001\001\000\006" +
+    "\006\121\007\037\001\001\000\004\007\046\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\021\125\001\001" +
+    "\000\006\006\126\007\037\001\001\000\004\007\046\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\020\132" +
+    "\001\001\000\006\006\133\007\037\001\001\000\004\007" +
+    "\046\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -194,22 +209,24 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
 
 
 
+    public HashSet<String> dispositivos = new HashSet<>();
+    public java.util.HashMap<String, HashSet<String>> interfacesPorDispositivo = new java.util.HashMap<>();
+    public HashSet<String> interfacesUsadas = new HashSet<>();
+    public String dispositivoActual = null;
+    public String errores = "";
+
     @Override
     public void syntax_error(Symbol s){
-        System.out.println(
-            "Error sintáctico en token: " + s.value +
-            " | línea: " + s.left +
-            " | columna: " + s.right
-        );
+        errores += "Error sintáctico en token: " + s.value +
+                   " | línea: " + s.left +
+                   " | columna: " + s.right + "\n";
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol s){
-        System.out.println(
-            "Error fatal de sintaxis en token: " + s.value +
-            " | línea: " + s.left +
-            " | columna: " + s.right
-        );
+        errores += "Error fatal de sintaxis en token: " + s.value +
+                   " | línea: " + s.left +
+                   " | columna: " + s.right + "\n";
     }
 
 
@@ -306,97 +323,347 @@ class CUP$AnalisisSintactico$actions {
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // dispositivo ::= ROUTER ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 7: // NT$0 ::= 
             {
               Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$0",7, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // dispositivo ::= FIREWALL ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 8: // dispositivo ::= ROUTER ID LLAVE_ABIERTA NT$0 lista_interfaces LLAVE_CERRADA 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$0
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // dispositivo ::= SWITCH ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 9: // NT$1 ::= 
             {
               Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$1",8, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // dispositivo ::= SWITCHL3 ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 10: // dispositivo ::= FIREWALL ID LLAVE_ABIERTA NT$1 lista_interfaces LLAVE_CERRADA 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$1
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // dispositivo ::= SERVER ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 11: // NT$2 ::= 
             {
               Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$2",9, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // dispositivo ::= PC ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 12: // dispositivo ::= SWITCH ID LLAVE_ABIERTA NT$2 lista_interfaces LLAVE_CERRADA 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$2
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // dispositivo ::= LAPTOP ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 13: // NT$3 ::= 
             {
               Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$3",10, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // dispositivo ::= MOBILE ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 14: // dispositivo ::= SWITCHL3 ID LLAVE_ABIERTA NT$3 lista_interfaces LLAVE_CERRADA 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$3
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // dispositivo ::= ACCESSPOINT ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 15: // NT$4 ::= 
             {
               Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$4",11, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // dispositivo ::= INTERNET ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA 
+          case 16: // dispositivo ::= SERVER ID LLAVE_ABIERTA NT$4 lista_interfaces LLAVE_CERRADA 
             {
               Object RESULT =null;
+              // propagate RESULT from NT$4
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
 
-              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // lista_interfaces ::= lista_interfaces interfaz 
+          case 17: // NT$5 ::= 
+            {
+              Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$5",12, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // dispositivo ::= PC ID LLAVE_ABIERTA NT$5 lista_interfaces LLAVE_CERRADA 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$5
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
+
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // NT$6 ::= 
+            {
+              Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$6",13, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // dispositivo ::= LAPTOP ID LLAVE_ABIERTA NT$6 lista_interfaces LLAVE_CERRADA 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$6
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
+
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // NT$7 ::= 
+            {
+              Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$7",14, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // dispositivo ::= MOBILE ID LLAVE_ABIERTA NT$7 lista_interfaces LLAVE_CERRADA 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$7
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
+
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // NT$8 ::= 
+            {
+              Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$8",15, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 24: // dispositivo ::= ACCESSPOINT ID LLAVE_ABIERTA NT$8 lista_interfaces LLAVE_CERRADA 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$8
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
+
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // NT$9 ::= 
+            {
+              Object RESULT =null;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$9",16, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 26: // dispositivo ::= INTERNET ID LLAVE_ABIERTA NT$9 lista_interfaces LLAVE_CERRADA 
+            {
+              Object RESULT =null;
+              // propagate RESULT from NT$9
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)).value;
+		int nombreleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).left;
+		int nombreright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).right;
+		String nombre = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)).value;
+
+              CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("dispositivo",3, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
+            }
+          return CUP$AnalisisSintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 27: // lista_interfaces ::= lista_interfaces interfaz 
             {
               Object RESULT =null;
 
@@ -405,7 +672,7 @@ class CUP$AnalisisSintactico$actions {
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // lista_interfaces ::= interfaz 
+          case 28: // lista_interfaces ::= interfaz 
             {
               Object RESULT =null;
 
@@ -414,28 +681,120 @@ class CUP$AnalisisSintactico$actions {
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // interfaz ::= INTERFAZ NOMBRE_INTERFAZ PUNTO_COMA 
+          case 29: // interfaz ::= INTERFAZ NOMBRE_INTERFAZ PUNTO_COMA 
             {
               Object RESULT =null;
-
+		int nombreIfleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int nombreIfright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String nombreIf = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+		
+          if(dispositivoActual != null) {
+              HashSet<String> lista = interfacesPorDispositivo.get(dispositivoActual);
+              if(lista != null) {
+                  if(lista.contains(nombreIf)) {
+                      errores += "Error: interfaz duplicada en " + dispositivoActual + ": " + nombreIf + "\n";
+                  } else {
+                      lista.add(nombreIf);
+                  }
+              }
+          }
+      
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("interfaz",5, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-2)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // interfaz ::= INTERFAZ NOMBRE_INTERFAZ IP DIRECCION_IP PUNTO_COMA 
+          case 30: // interfaz ::= INTERFAZ NOMBRE_INTERFAZ IP DIRECCION_IP PUNTO_COMA 
             {
               Object RESULT =null;
-
+		int nombreIfleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).left;
+		int nombreIfright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).right;
+		String nombreIf = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).value;
+		int dirleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int dirright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String dir = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+		
+          if(dispositivoActual != null) {
+              HashSet<String> lista = interfacesPorDispositivo.get(dispositivoActual);
+              if(lista != null) {
+                  if(lista.contains(nombreIf)) {
+                      errores += "Error: interfaz duplicada en " + dispositivoActual + ": " + nombreIf + "\n";
+                  } else {
+                      lista.add(nombreIf);
+                  }
+              }
+          }
+      
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("interfaz",5, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-4)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // conexion ::= CONECTAR ID PUNTO NOMBRE_INTERFAZ FLECHA ID PUNTO NOMBRE_INTERFAZ PUNTO_COMA 
+          case 31: // conexion ::= CONECTAR ID PUNTO NOMBRE_INTERFAZ FLECHA ID PUNTO NOMBRE_INTERFAZ PUNTO_COMA 
             {
               Object RESULT =null;
+		int origenleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-7)).left;
+		int origenright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-7)).right;
+		String origen = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-7)).value;
+		int ifOrigenleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)).left;
+		int ifOrigenright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)).right;
+		String ifOrigen = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-5)).value;
+		int destinoleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).left;
+		int destinoright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).right;
+		String destino = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-3)).value;
+		int ifDestinoleft = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).left;
+		int ifDestinoright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
+		String ifDestino = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
+		
+          if(!dispositivos.contains(origen)) {
+              errores += "Error: dispositivo no existe: " + origen + "\n";
+          }
 
+          if(!dispositivos.contains(destino)) {
+              errores += "Error: dispositivo no existe: " + destino + "\n";
+          }
+
+          if(dispositivos.contains(origen)) {
+              HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
+              if(listaOrigen != null && !listaOrigen.contains(ifOrigen)) {
+                  errores += "Error: interfaz no existe en " + origen + ": " + ifOrigen + "\n";
+              }
+          }
+
+          if(dispositivos.contains(destino)) {
+              HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
+              if(listaDestino != null && !listaDestino.contains(ifDestino)) {
+                  errores += "Error: interfaz no existe en " + destino + ": " + ifDestino + "\n";
+              }
+          }
+
+          // Validar uso solo si la interfaz sí existe
+          if(dispositivos.contains(origen)) {
+              HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
+              if(listaOrigen != null && listaOrigen.contains(ifOrigen)) {
+                  String usoOrigen = origen + "." + ifOrigen;
+
+                  if(interfacesUsadas.contains(usoOrigen)) {
+                      errores += "Error: interfaz ya usada: " + usoOrigen + "\n";
+                  } else {
+                      interfacesUsadas.add(usoOrigen);
+                  }
+              }
+          }
+
+          if(dispositivos.contains(destino)) {
+              HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
+              if(listaDestino != null && listaDestino.contains(ifDestino)) {
+                  String usoDestino = destino + "." + ifDestino;
+
+                  if(interfacesUsadas.contains(usoDestino)) {
+                      errores += "Error: interfaz ya usada: " + usoDestino + "\n";
+                  } else {
+                      interfacesUsadas.add(usoDestino);
+                  }
+              }
+          }
+      
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("conexion",6, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-8)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
             }
           return CUP$AnalisisSintactico$result;

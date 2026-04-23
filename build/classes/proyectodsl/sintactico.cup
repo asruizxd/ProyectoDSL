@@ -1,24 +1,28 @@
 package proyectodsl;
+
 import java_cup.runtime.Symbol;
+import java.util.HashSet;
 
 parser code
 {:
+    public HashSet<String> dispositivos = new HashSet<>();
+    public java.util.HashMap<String, HashSet<String>> interfacesPorDispositivo = new java.util.HashMap<>();
+    public HashSet<String> interfacesUsadas = new HashSet<>();
+    public String dispositivoActual = null;
+    public String errores = "";
+
     @Override
     public void syntax_error(Symbol s){
-        System.out.println(
-            "Error sintáctico en token: " + s.value +
-            " | línea: " + s.left +
-            " | columna: " + s.right
-        );
+        errores += "Error sintáctico en token: " + s.value +
+                   " | línea: " + s.left +
+                   " | columna: " + s.right + "\n";
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol s){
-        System.out.println(
-            "Error fatal de sintaxis en token: " + s.value +
-            " | línea: " + s.left +
-            " | columna: " + s.right
-        );
+        errores += "Error fatal de sintaxis en token: " + s.value +
+                   " | línea: " + s.left +
+                   " | columna: " + s.right + "\n";
     }
 :};
 
@@ -38,7 +42,8 @@ non terminal conexion;
 
 start with inicio;
 
-inicio ::= RED ID LLAVE_ABIERTA lista_instrucciones LLAVE_CERRADA
+inicio ::=
+      RED ID LLAVE_ABIERTA lista_instrucciones LLAVE_CERRADA
 ;
 
 lista_instrucciones ::=
@@ -53,16 +58,125 @@ instruccion ::=
 ;
 
 dispositivo ::=
-      ROUTER ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | FIREWALL ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | SWITCH ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | SWITCHL3 ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | SERVER ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | PC ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | LAPTOP ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | MOBILE ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | ACCESSPOINT ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
-    | INTERNET ID LLAVE_ABIERTA lista_interfaces LLAVE_CERRADA
+      ROUTER ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | FIREWALL ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | SWITCH ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | SWITCHL3 ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | SERVER ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | PC ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | LAPTOP ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | MOBILE ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | ACCESSPOINT ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
+
+    | INTERNET ID:nombre LLAVE_ABIERTA
+      {:
+          dispositivoActual = nombre;
+          if(dispositivos.contains(nombre)) {
+              errores += "Error: dispositivo duplicado: " + nombre + "\n";
+          } else {
+              dispositivos.add(nombre);
+              interfacesPorDispositivo.put(nombre, new HashSet<>());
+          }
+      :}
+      lista_interfaces LLAVE_CERRADA
 ;
 
 lista_interfaces ::=
@@ -71,13 +185,86 @@ lista_interfaces ::=
 ;
 
 interfaz ::=
-      INTERFAZ NOMBRE_INTERFAZ PUNTO_COMA
-    | INTERFAZ NOMBRE_INTERFAZ IP DIRECCION_IP PUNTO_COMA
+      INTERFAZ NOMBRE_INTERFAZ:nombreIf PUNTO_COMA
+      {:
+          if(dispositivoActual != null) {
+              HashSet<String> lista = interfacesPorDispositivo.get(dispositivoActual);
+              if(lista != null) {
+                  if(lista.contains(nombreIf)) {
+                      errores += "Error: interfaz duplicada en " + dispositivoActual + ": " + nombreIf + "\n";
+                  } else {
+                      lista.add(nombreIf);
+                  }
+              }
+          }
+      :}
+    | INTERFAZ NOMBRE_INTERFAZ:nombreIf IP DIRECCION_IP:dir PUNTO_COMA
+      {:
+          if(dispositivoActual != null) {
+              HashSet<String> lista = interfacesPorDispositivo.get(dispositivoActual);
+              if(lista != null) {
+                  if(lista.contains(nombreIf)) {
+                      errores += "Error: interfaz duplicada en " + dispositivoActual + ": " + nombreIf + "\n";
+                  } else {
+                      lista.add(nombreIf);
+                  }
+              }
+          }
+      :}
 ;
 
 conexion ::=
-      CONECTAR ID PUNTO NOMBRE_INTERFAZ
+      CONECTAR ID:origen PUNTO NOMBRE_INTERFAZ:ifOrigen
       FLECHA
-      ID PUNTO NOMBRE_INTERFAZ
+      ID:destino PUNTO NOMBRE_INTERFAZ:ifDestino
       PUNTO_COMA
+      {:
+          if(!dispositivos.contains(origen)) {
+              errores += "Error: dispositivo no existe: " + origen + "\n";
+          }
+
+          if(!dispositivos.contains(destino)) {
+              errores += "Error: dispositivo no existe: " + destino + "\n";
+          }
+
+          if(dispositivos.contains(origen)) {
+              HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
+              if(listaOrigen != null && !listaOrigen.contains(ifOrigen)) {
+                  errores += "Error: interfaz no existe en " + origen + ": " + ifOrigen + "\n";
+              }
+          }
+
+          if(dispositivos.contains(destino)) {
+              HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
+              if(listaDestino != null && !listaDestino.contains(ifDestino)) {
+                  errores += "Error: interfaz no existe en " + destino + ": " + ifDestino + "\n";
+              }
+          }
+
+          if(dispositivos.contains(origen)) {
+              HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
+              if(listaOrigen != null && listaOrigen.contains(ifOrigen)) {
+                  String usoOrigen = origen + "." + ifOrigen;
+
+                  if(interfacesUsadas.contains(usoOrigen)) {
+                      errores += "Error: interfaz ya usada: " + usoOrigen + "\n";
+                  } else {
+                      interfacesUsadas.add(usoOrigen);
+                  }
+              }
+          }
+
+          if(dispositivos.contains(destino)) {
+              HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
+              if(listaDestino != null && listaDestino.contains(ifDestino)) {
+                  String usoDestino = destino + "." + ifDestino;
+
+                  if(interfacesUsadas.contains(usoDestino)) {
+                      errores += "Error: interfaz ya usada: " + usoDestino + "\n";
+                  } else {
+                      interfacesUsadas.add(usoDestino);
+                  }
+              }
+          }
+      :}
 ;
