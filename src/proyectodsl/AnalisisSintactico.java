@@ -210,10 +210,88 @@ public class AnalisisSintactico extends java_cup.runtime.lr_parser {
 
 
     public HashSet<String> dispositivos = new HashSet<>();
-    public java.util.HashMap<String, HashSet<String>> interfacesPorDispositivo = new java.util.HashMap<>();
     public HashSet<String> interfacesUsadas = new HashSet<>();
+
+    public java.util.HashMap<String, HashSet<String>> interfacesPorDispositivo = new java.util.HashMap<>();
+    public java.util.HashMap<String, String> tipoDispositivo = new java.util.HashMap<>();
+    public java.util.HashMap<String, java.util.HashMap<String, String>> ipPorInterfaz = new java.util.HashMap<>();
+
+    public String uml = "@startuml\n";
     public String dispositivoActual = null;
     public String errores = "";
+
+    public String obtenerUML() {
+        return uml + "@enduml";
+    }
+
+    public void generarNodos() {
+    String nodos = "";
+
+    for(String d : dispositivos) {
+        String tipo = tipoDispositivo.get(d);
+        String texto = "";
+
+        HashSet<String> interfaces = interfacesPorDispositivo.get(d);
+        java.util.HashMap<String, String> mapaIps = ipPorInterfaz.get(d);
+
+        if(interfaces != null) {
+            for(String i : interfaces) {
+                if(mapaIps != null && mapaIps.containsKey(i)) {
+                    texto += i + ": " + mapaIps.get(i) + "\\n";
+                } else {
+                    texto += i + "\\n";
+                }
+            }
+        }
+
+        switch(tipo) {
+            case "router":
+                nodos += "database \"Router " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "firewall":
+                nodos += "rectangle \"Firewall " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "switch":
+                nodos += "component \"Switch " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "switchL3":
+                nodos += "component \"Switch L3 " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "server":
+                nodos += "rectangle \"Server " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "pc":
+                nodos += "note \"" + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "laptop":
+                nodos += "note \"Laptop " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "mobile":
+                nodos += "note \"Mobile " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "accesspoint":
+                nodos += "node \"" + d + "\\nAccess Point\\n" + texto + "\" as " + d + "\n";
+                break;
+
+            case "internet":
+                nodos += "cloud \"Internet " + d + "\\n" + texto + "\" as " + d + "\n";
+                break;
+        }
+    }
+
+    uml = "@startuml\n" +
+          "title Red generada automáticamente\n\n" +
+          nodos +
+          uml.substring("@startuml\n".length());
+    }   
 
     @Override
     public void syntax_error(Symbol s){
@@ -336,6 +414,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "router");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$0",7, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -370,6 +450,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "firewall");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$1",8, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -404,6 +486,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "switch");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$2",9, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -438,6 +522,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "switchL3");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$3",10, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -472,6 +558,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "server");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$4",11, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -506,6 +594,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "pc");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$5",12, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -540,6 +630,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "laptop");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$6",13, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -574,6 +666,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "mobile");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$7",14, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -608,6 +702,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "accesspoint");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$8",15, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -642,6 +738,8 @@ class CUP$AnalisisSintactico$actions {
           } else {
               dispositivos.add(nombre);
               interfacesPorDispositivo.put(nombre, new HashSet<>());
+              tipoDispositivo.put(nombre, "internet");
+              ipPorInterfaz.put(nombre, new java.util.HashMap<>());
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("NT$9",16, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);
@@ -721,6 +819,7 @@ class CUP$AnalisisSintactico$actions {
                       errores += "Error: interfaz duplicada en " + dispositivoActual + ": " + nombreIf + "\n";
                   } else {
                       lista.add(nombreIf);
+                      ipPorInterfaz.get(dispositivoActual).put(nombreIf, dir);
                   }
               }
           }
@@ -746,53 +845,57 @@ class CUP$AnalisisSintactico$actions {
 		int ifDestinoright = ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).right;
 		String ifDestino = (String)((java_cup.runtime.Symbol) CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-1)).value;
 		
+          boolean origenValido = true;
+          boolean destinoValido = true;
+
           if(!dispositivos.contains(origen)) {
               errores += "Error: dispositivo no existe: " + origen + "\n";
+              origenValido = false;
           }
 
           if(!dispositivos.contains(destino)) {
               errores += "Error: dispositivo no existe: " + destino + "\n";
+              destinoValido = false;
           }
 
-          if(dispositivos.contains(origen)) {
+          if(origenValido) {
               HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
               if(listaOrigen != null && !listaOrigen.contains(ifOrigen)) {
                   errores += "Error: interfaz no existe en " + origen + ": " + ifOrigen + "\n";
+                  origenValido = false;
               }
           }
 
-          if(dispositivos.contains(destino)) {
+          if(destinoValido) {
               HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
               if(listaDestino != null && !listaDestino.contains(ifDestino)) {
                   errores += "Error: interfaz no existe en " + destino + ": " + ifDestino + "\n";
+                  destinoValido = false;
               }
           }
 
-          // Validar uso solo si la interfaz sí existe
-          if(dispositivos.contains(origen)) {
-              HashSet<String> listaOrigen = interfacesPorDispositivo.get(origen);
-              if(listaOrigen != null && listaOrigen.contains(ifOrigen)) {
-                  String usoOrigen = origen + "." + ifOrigen;
-
-                  if(interfacesUsadas.contains(usoOrigen)) {
-                      errores += "Error: interfaz ya usada: " + usoOrigen + "\n";
-                  } else {
-                      interfacesUsadas.add(usoOrigen);
-                  }
+          if(origenValido) {
+              String usoOrigen = origen + "." + ifOrigen;
+              if(interfacesUsadas.contains(usoOrigen)) {
+                  errores += "Error: interfaz ya usada: " + usoOrigen + "\n";
+                  origenValido = false;
+              } else {
+                  interfacesUsadas.add(usoOrigen);
               }
           }
 
-          if(dispositivos.contains(destino)) {
-              HashSet<String> listaDestino = interfacesPorDispositivo.get(destino);
-              if(listaDestino != null && listaDestino.contains(ifDestino)) {
-                  String usoDestino = destino + "." + ifDestino;
-
-                  if(interfacesUsadas.contains(usoDestino)) {
-                      errores += "Error: interfaz ya usada: " + usoDestino + "\n";
-                  } else {
-                      interfacesUsadas.add(usoDestino);
-                  }
+          if(destinoValido) {
+              String usoDestino = destino + "." + ifDestino;
+              if(interfacesUsadas.contains(usoDestino)) {
+                  errores += "Error: interfaz ya usada: " + usoDestino + "\n";
+                  destinoValido = false;
+              } else {
+                  interfacesUsadas.add(usoDestino);
               }
+          }
+
+          if(origenValido && destinoValido) {
+              uml += origen + " -- " + destino + " : " + ifOrigen + " ↔ " + ifDestino + "\n";
           }
       
               CUP$AnalisisSintactico$result = parser.getSymbolFactory().newSymbol("conexion",6, ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.elementAt(CUP$AnalisisSintactico$top-8)), ((java_cup.runtime.Symbol)CUP$AnalisisSintactico$stack.peek()), RESULT);

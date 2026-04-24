@@ -17,7 +17,7 @@ import java_cup.runtime.ComplexSymbolFactory.Location;
 digito      = [0-9]
 letra       = [a-zA-Z]
 id          = ({letra}|_)(({letra}|_)|{digito})*
-interfaz = {letra}({letra}|{digito}|\/)*
+interfaz = (g[0-9]+"/"[0-9]+)|(f[0-9]+"/"[0-9]+)|(eth[0-9]+)|(wan[0-9]+)|(inside)|(outside)
 ip          = {digito}+"."{digito}+"."{digito}+"."{digito}+"/"{digito}+
 espacio     = (" "|\r|\n|\t|\f)+
 
@@ -100,12 +100,12 @@ new Location(yyline+1, yycolumn+1, (int)yychar)
     "ip"            { return symbol("IP", Simbolo.IP); }
     "tipo"          { return symbol("TIPO", Simbolo.TIPO); }
     "conectar"      { return symbol("CONECTAR", Simbolo.CONECTAR); }
+    
+        {ip}            { return symbol("DIRECCION_IP", Simbolo.DIRECCION_IP, yytext()); }
 
-    {ip}            { return symbol("DIRECCION_IP", Simbolo.DIRECCION_IP, yytext()); }
+        {interfaz}      { return symbol("NOMBRE_INTERFAZ", Simbolo.NOMBRE_INTERFAZ, yytext()); }
 
-    {id}            { return symbol("ID", Simbolo.ID, yytext()); }
-
-    {interfaz}      { return symbol("NOMBRE_INTERFAZ", Simbolo.NOMBRE_INTERFAZ, yytext()); }
+        {id}            { return symbol("ID", Simbolo.ID, yytext()); }
 
     [\"] ~[\"] {
         String t = yytext();

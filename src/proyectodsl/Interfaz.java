@@ -85,26 +85,27 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-          try {
-            String entrada = jTextArea1.getText();
-            StringReader sr = new StringReader(entrada);
+         try {
+        String entrada = jTextArea1.getText();
+        StringReader sr = new StringReader(entrada);
 
-            ComplexSymbolFactory sf = new ComplexSymbolFactory();
+        ComplexSymbolFactory sf = new ComplexSymbolFactory();
 
-            AnalisisLexico lexer = new AnalisisLexico(sr);
-            lexer.setSymbolFactory(sf);
+        AnalisisLexico lexer = new AnalisisLexico(sr);
+        lexer.setSymbolFactory(sf);
 
-            AnalisisSintactico parser = new AnalisisSintactico(lexer, sf);
-            parser.parse();
+        AnalisisSintactico parser = new AnalisisSintactico(lexer, sf);
+        parser.parse();
+        parser.generarNodos();
 
-            if (parser.errores.isEmpty()) {
-                jTextArea2.setText("Compilación exitosa.");
-            } else {
-                jTextArea2.setText(parser.errores);
-            }
+        if (parser.errores.isEmpty()) {
+            jTextArea2.setText(parser.obtenerUML());
+        } else {
+            jTextArea2.setText(parser.errores);
+        }
 
-        } catch (Exception ex) {
-            jTextArea2.setText("Error:\n" + ex.getMessage());
+    } catch (Exception ex) {
+        jTextArea2.setText("Error:\n" + ex.getMessage());
     }
     
     }//GEN-LAST:event_jButton1ActionPerformed
